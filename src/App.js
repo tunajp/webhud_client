@@ -12,6 +12,8 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { Logo } from './Logo';
 
+import MyButton from './MyButton'
+
 function App() {
   return (
     <ChakraProvider theme={theme}>
@@ -34,6 +36,7 @@ function App() {
             </Link>
           </VStack>
         </Grid>
+        <MyButton name="ほげ"></MyButton>
       </Box>
     </ChakraProvider>
   );
