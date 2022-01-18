@@ -30,7 +30,7 @@ export default class Hover extends React.Component {
         const url = this.props.url;
         console.log(url);
 
-        const obj = {hover: this.state.hover};
+        const obj = {type: "hover", hover: this.state.hover};
         const method = "POST";
         const body = JSON.stringify(obj);
         const headers = {
@@ -74,7 +74,7 @@ export default class Hover extends React.Component {
             <VStack w="80vw">
                 <HStack>
                     <Text>Hover</Text>
-                    <NumberInput min={-20.0} max={20.0}  defaultValue={0.0} precision={1} step={0.1} onChange={this.onNumberChange} value={this.state.hover}>
+                    <NumberInput min={-2.0} max={2.0}  defaultValue={0.0} precision={2} step={0.01} onChange={this.onNumberChange} value={this.state.hover}>
                         <NumberInputField />
                         <NumberInputStepper>
                             <NumberIncrementStepper />
@@ -82,21 +82,21 @@ export default class Hover extends React.Component {
                         </NumberInputStepper>
                     </NumberInput>
                 </HStack>
-                <Slider aria-label="slider-ex-1" min={-20.0} max={20.0} defaultValue={0.0} step={0.1} onChange={this.onSliderChange} onChangeEnd={this.onSliderChangeEnd} value={this.state.hover}>
-                    <SliderMark value={-20} mt='1' ml='-2.5' fontSize='sm'>
-                        -20.0
+                <Slider aria-label="slider-ex-1" min={-2.0} max={2.0} defaultValue={0.0} step={0.01} onChange={this.onSliderChange} onChangeEnd={this.onSliderChangeEnd} value={this.state.hover}>
+                    <SliderMark value={-2} mt='1' ml='-2.5' fontSize='sm'>
+                        -2.0
                     </SliderMark>
-                    <SliderMark value={-10} mt='1' ml='-2.5' fontSize='sm'>
-                        -10.0
+                    <SliderMark value={-1} mt='1' ml='-2.5' fontSize='sm'>
+                        -1.0
                     </SliderMark>
                     <SliderMark value={0} mt='1' ml='-2.5' fontSize='sm'>
                         0
                     </SliderMark>
-                    <SliderMark value={10} mt='1' ml='-2.5' fontSize='sm'>
-                        10.0
+                    <SliderMark value={1} mt='1' ml='-2.5' fontSize='sm'>
+                        1.0
                     </SliderMark>
-                    <SliderMark value={20} mt='1' ml='-2.5' fontSize='sm'>
-                        20.0
+                    <SliderMark value={2} mt='1' ml='-2.5' fontSize='sm'>
+                        2.0
                     </SliderMark>
 
                     <SliderTrack>
