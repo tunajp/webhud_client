@@ -11,6 +11,8 @@ import {
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
+import Hover from './components/Hover';
+
 export default class App extends React.Component {
     render() {
         return (
@@ -22,6 +24,8 @@ export default class App extends React.Component {
                             <Text>
                                 Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
                             </Text>
+
+                            <Hover />
                         </VStack>
                     </Grid>
                 </Box>
