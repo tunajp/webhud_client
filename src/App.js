@@ -14,6 +14,9 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Hover from './components/Hover';
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <ChakraProvider theme={theme}>
@@ -25,7 +28,7 @@ export default class App extends React.Component {
                                 Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
                             </Text>
 
-                            <Hover />
+                            <Hover url={this.props.url} />
                         </VStack>
                     </Grid>
                 </Box>

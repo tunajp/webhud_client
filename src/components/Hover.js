@@ -27,6 +27,33 @@ export default class Hover extends React.Component {
 
     fetch = () => {
         console.log("fetch : " + this.state.hover);
+        const url = this.props.url;
+        console.log(url);
+
+        const obj = {hover: this.state.hover};
+        const method = "POST";
+        const body = JSON.stringify(obj);
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        };
+
+        fetch(url, {method, headers, body})
+        .then((res)=> {
+            //return res.json();
+            return res.text();
+        })
+        .then( (data) => {
+            console.log(data);
+            //const resElement = document.querySelector("#res");
+            //resElement.textContent = gatDate() + data;
+            ////alert("success:"+ data); // sl内のcefでは表示されない
+        }).
+        catch((error) => {
+            console.log(error);
+            //alert("error:"+ error); // sl内のcefでは表示されない
+        });
+
     }
 
     onNumberChange = (e) => {
