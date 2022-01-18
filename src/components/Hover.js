@@ -62,6 +62,10 @@ export default class Hover extends React.Component {
     }
     onSliderChange = (e) => {
         this.setState({hover: e});
+        //this.fetch(); リクエスト数が増え過ぎちゃう
+    }
+    onSliderChangeEnd = (e) => {
+        this.setState({hover: e});
         this.fetch();
     }
 
@@ -78,7 +82,7 @@ export default class Hover extends React.Component {
                         </NumberInputStepper>
                     </NumberInput>
                 </HStack>
-                <Slider aria-label="slider-ex-1" min={-20.0} max={20.0} defaultValue={0.0} step={0.1} onChange={this.onSliderChange} value={this.state.hover}>
+                <Slider aria-label="slider-ex-1" min={-20.0} max={20.0} defaultValue={0.0} step={0.1} onChange={this.onSliderChange} onChangeEnd={this.onSliderChangeEnd} value={this.state.hover}>
                     <SliderMark value={-20} mt='1' ml='-2.5' fontSize='sm'>
                         -20.0
                     </SliderMark>
