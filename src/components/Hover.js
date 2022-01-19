@@ -13,7 +13,7 @@ import {
     NumberInputStepper,
     NumberIncrementStepper,
     NumberDecrementStepper,
-
+    Button,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
@@ -64,6 +64,11 @@ export default class Hover extends React.Component {
         this.setState({hover: e});
         //this.fetch(); リクエスト数が増え過ぎちゃう
     }
+    onResetButton = (e) => {
+        this.setState({hover: 0}, () => {
+            this.fetch();
+        });
+    }
     onSliderChangeEnd = (e) => {
         this.setState({hover: e});
         this.fetch();
@@ -81,6 +86,7 @@ export default class Hover extends React.Component {
                             <NumberDecrementStepper />
                         </NumberInputStepper>
                     </NumberInput>
+                    <Button colorScheme="red" onClick={this.onResetButton}>Reset</Button>
                 </HStack>
                 <Slider aria-label="slider-ex-1" min={-2.0} max={2.0} defaultValue={0.0} step={0.01} onChange={this.onSliderChange} onChangeEnd={this.onSliderChangeEnd} value={this.state.hover}>
                     <SliderMark value={-2} mt='1' ml='-2.5' fontSize='sm'>
