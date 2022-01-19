@@ -57,8 +57,9 @@ export default class Hover extends React.Component {
     }
 
     onNumberChange = (e) => {
-        this.setState({hover: e});
-        this.fetch();
+        this.setState({hover: e}, () => {
+            this.fetch();
+        });
     }
     onSliderChange = (e) => {
         this.setState({hover: e});
@@ -70,8 +71,9 @@ export default class Hover extends React.Component {
         });
     }
     onSliderChangeEnd = (e) => {
-        this.setState({hover: e});
-        this.fetch();
+        this.setState({hover: e}, () => {
+            this.fetch();
+        });
     }
 
     render() {

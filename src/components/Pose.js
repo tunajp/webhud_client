@@ -52,7 +52,7 @@ export default class Pose extends React.Component {
             <VStack w="80vw">
                 <Text>Pose/Animation</Text>
                 <Grid templateColumns='repeat(5, 1fr)' gap={6}>
-                    <GridItem><Button w='100%' colorScheme="blue" onClick={() => this.onPress("ground sit")}>Ground Sit</Button></GridItem>
+                    <GridItem><Button w='100%' colorScheme="blue" onClick={() => this.onPress("shy-ground-sit1")}>Ground Sit</Button></GridItem>
                     <GridItem><Button w='100%' colorScheme="blue" onClick={() => this.onPress("Dead")}>Dead</Button></GridItem>
                     <GridItem><Button w='100%' colorScheme="red" onClick={() => this.onPress("Stop Pose")}>Stop Pose</Button></GridItem>
                     <GridItem><Button w='100%' colorScheme="red" onClick={() => this.onPress("Stop Anims")}>Stop Anims</Button></GridItem>
