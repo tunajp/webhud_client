@@ -12,6 +12,7 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
 import Hover from './components/Hover';
+import Pose from './components/Pose';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -24,11 +25,8 @@ export default class App extends React.Component {
                     <Grid minH="100vh" p={3}>
                         <ColorModeSwitcher justifySelf="flex-end" />
                         <VStack spacing={8}>
-                            <Text>
-                                Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-                            </Text>
-
                             <Hover url={this.props.url} />
+                            <Pose url={this.props.url} />
                         </VStack>
                     </Grid>
                 </Box>
