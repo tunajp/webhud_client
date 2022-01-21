@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
+import NavBar from './components/Navibar';
 import Hover from './components/Hover';
 import Pose from './components/Pose';
 
@@ -23,7 +24,7 @@ export default class App extends React.Component {
             <ChakraProvider theme={theme}>
                 <Box textAlign="center" fontSize="xl">
                     <Grid minH="100vh" p={3}>
-                        <ColorModeSwitcher justifySelf="flex-end" />
+                        <NavBar />
                         <VStack spacing={8}>
                             <Hover url={this.props.url} />
                             <Pose url={this.props.url} />
