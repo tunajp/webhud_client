@@ -16,8 +16,9 @@ import {
     Button,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
-export default class Hover extends React.Component {
+class Hover extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -77,10 +78,11 @@ export default class Hover extends React.Component {
     }
 
     render() {
+        const { t } = this.props;
         return (
             <VStack w="80vw">
                 <HStack>
-                    <Text>Hover</Text>
+                <Text>{this.props.t("Hover")}</Text>
                     <NumberInput min={-2.0} max={2.0}  defaultValue={0.0} precision={2} step={0.01} onChange={this.onNumberChange} value={this.state.hover}>
                         <NumberInputField />
                         <NumberInputStepper>
@@ -116,3 +118,5 @@ export default class Hover extends React.Component {
         );
     }
 }
+
+export default withTranslation()(Hover);

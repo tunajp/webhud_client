@@ -18,6 +18,7 @@ import {
   } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import { withTranslation, WithTranslation } from 'react-i18next';
 
 const Links = ['Avatar', 'Items', 'Environment'];
 
@@ -39,7 +40,7 @@ class NavLink extends React.Component {
     }
 }
 
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -98,8 +99,8 @@ export default class NavBar extends React.Component {
                                 />
                             </MenuButton>
                             <MenuList>
-                                <MenuItem>English</MenuItem>
-                                <MenuItem>Japanese</MenuItem>
+                                <MenuItem onClick={()=>{this.props.i18n.changeLanguage("en");}}>English</MenuItem>
+                                <MenuItem onClick={()=>{this.props.i18n.changeLanguage("ja");}}>Japanese</MenuItem>
                                 <MenuDivider />
                                 <MenuItem>Link 3</MenuItem>
                             </MenuList>
@@ -121,3 +122,5 @@ export default class NavBar extends React.Component {
         );
     }
 }
+
+export default withTranslation()(NavBar);
