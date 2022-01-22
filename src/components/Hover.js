@@ -82,7 +82,7 @@ class Hover extends React.Component {
         return (
             <VStack w="80vw">
                 <HStack>
-                <Text>{this.props.t("Hover")}</Text>
+                <Text>{t("Hover")}</Text>
                     <NumberInput min={-2.0} max={2.0}  defaultValue={0.0} precision={2} step={0.01} onChange={this.onNumberChange} value={this.state.hover}>
                         <NumberInputField />
                         <NumberInputStepper>
@@ -90,7 +90,7 @@ class Hover extends React.Component {
                             <NumberDecrementStepper />
                         </NumberInputStepper>
                     </NumberInput>
-                    <Button colorScheme="red" onClick={this.onResetButton}>Reset</Button>
+                    <Button colorScheme="red" onClick={this.onResetButton}>{t("Reset")}</Button>
                 </HStack>
                 <Slider aria-label="slider-ex-1" min={-2.0} max={2.0} defaultValue={0.0} step={0.01} onChange={this.onSliderChange} onChangeEnd={this.onSliderChangeEnd} value={this.state.hover}>
                     <SliderMark value={-2} mt='1' ml='-2.5' fontSize='sm'>

@@ -60,6 +60,7 @@ class NavBar extends React.Component {
         this.setState({isOpen: false});
     }
     render() {
+        const { t } = this.props;
         return(
             <>
                 <Box px={4}>
@@ -78,7 +79,7 @@ class NavBar extends React.Component {
                             spacing={4}
                             display={{ base: 'none', md: 'flex' }}>
                             {Links.map((link) => (
-                                <NavLink key={link}>{link}</NavLink>
+                                <NavLink key={link}>{t(link)}</NavLink>
                             ))}
                             </HStack>
                         </HStack>
@@ -100,7 +101,7 @@ class NavBar extends React.Component {
                             </MenuButton>
                             <MenuList>
                                 <MenuItem onClick={()=>{this.props.i18n.changeLanguage("en");}}>English</MenuItem>
-                                <MenuItem onClick={()=>{this.props.i18n.changeLanguage("ja");}}>Japanese</MenuItem>
+                                <MenuItem onClick={()=>{this.props.i18n.changeLanguage("ja");}}>日本語</MenuItem>
                                 <MenuDivider />
                                 <MenuItem>Link 3</MenuItem>
                             </MenuList>
@@ -112,7 +113,7 @@ class NavBar extends React.Component {
                     <Box pb={4} display={{ md: 'none' }}>
                         <Stack as={'nav'} spacing={4}>
                         {Links.map((link) => (
-                            <NavLink key={link}>{link}</NavLink>
+                            <NavLink key={link}>{t(link)}</NavLink>
                         ))}
                         </Stack>
                     </Box>
