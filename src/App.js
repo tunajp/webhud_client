@@ -25,9 +25,11 @@ i18n.use(initReactI18next).init({
             translation: {
                 'ようこそ React と react-i18next へ。': 'Welcome to React and react-i18next.',
                 言語を切り替え: 'change language',
+
                 "Avatar": "Avatar",
                 "Items": "Items",
                 "Environment": "Environment",
+
                 "Hover": "hover",
                 "Reset": "Reset",
                 "Pose/Animation": "Pose/Animation",
@@ -35,15 +37,25 @@ i18n.use(initReactI18next).init({
                 "Dead": "Dead",
                 "Stop Pose": "Stop Pose",
                 "Stop Anims": "Stop Anims",
+
+                "Current region avatars":"Current region avatars",
+                "Reload":"Reload",
+                "Name": "Name",
+                "Distance": "Distance",
+                "RenderingCost": "RenderingCost",
+                "ScriptMemory": "ScriptMemory",
+                "Detail": "Detail",
             },
         },
         ja: {
             translation: {
                 'ようこそ React と react-i18next へ。': 'ようこそ React と react-i18next へ。',
                 言語を切り替え: '言語を切り替え',
+
                 "Avatar": "アバター",
                 "Items": "アイテム",
                 "Environment": "環境",
+
                 "Hover": "ホバー",
                 "Reset": "リセット",
                 "Pose/Animation": "ポーズ/アニメ",
@@ -51,6 +63,14 @@ i18n.use(initReactI18next).init({
                 "Dead": "死",
                 "Stop Pose": "ポーズ停止",
                 "Stop Anims": "全アニメ停止",
+
+                "Current region avatars":"現在のリージョンにいるアバター",
+                "Reload":"リロード",
+                "Name": "アバター名",
+                "Distance": "距離",
+                "RenderingCost": "レンダリングコスト",
+                "ScriptMemory": "Scriptメモリ",
+                "Detail": "詳細"
             },
         },
     },
@@ -85,7 +105,9 @@ export default class App extends React.Component {
                             </VStack>
                         }
                         {this.state.page == 'Environment' &&
+                            <VStack spacing={8}>
                             <Environment></Environment>
+                            </VStack>
                         }
                     </Grid>
                 </Box>
