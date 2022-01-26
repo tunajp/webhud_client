@@ -24,22 +24,51 @@ class Environment extends React.Component {
                 // ex.
                 {Name:"test1", uuid:"xxx-xxx-xxx", Distance:10, RenderingCost:25.4, ScriptMemory: 100},
                 {Name:"test2", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test3", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test4", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test5", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test6", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test7", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test8", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test9", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test10", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
+                {Name:"test3", uuid:"zzz-zzz-zzz", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
+                {Name:"test4", uuid:"aaa-aaa-aaa", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
+                {Name:"test5", uuid:"bbb-bbb-bbb", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
+                {Name:"test6", uuid:"ccc-ccc-ccc", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
+                {Name:"test7", uuid:"ddd-ddd-ddd", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
+                {Name:"test8", uuid:"eee-eee-eee", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
+                {Name:"test9", uuid:"fff-fff-fff", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
+                {Name:"test10", uuid:"ggg-ggg-ggg", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
             ],
         };
     }
     onReloadClick = () => {
         // TODO:fetchしてsetStateでthis.state.avatarsを書き換える
+        console.log("fetch : ");
+        const url = this.props.url;
+        console.log(url);
+
+        const obj = {type: "environment", envronment: "avatars"};
+        const method = "POST";
+        const body = JSON.stringify(obj);
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        };
+
+        fetch(url, {method, headers, body})
+        .then((res)=> {
+            return res.json();
+            //return res.text();
+        })
+        .then( (data) => {
+            console.dir(data);
+            this.setState({avatars: data});
+            //const resElement = document.querySelector("#res");
+            //resElement.textContent = gatDate() + data;
+            ////alert("success:"+ data); // sl内のcefでは表示されない
+        }).
+        catch((error) => {
+            console.log(error);
+            //alert("error:"+ error); // sl内のcefでは表示されない
+        });
     }
     onDetailClick = (uuid) => {
         // TODO:fetchしでDetailを得る
+        console.log(uuid);
     }
     render() {
         const { t } = this.props;
@@ -63,7 +92,7 @@ class Environment extends React.Component {
                     </Thead>
                     <Tbody>
                         {this.state.avatars.map((avatar) => (
-                            <Tr>
+                            <Tr key={avatar['uuid']}>
                                 <Td>{avatar["Name"]}</Td>
                                 <Td isNumeric>{avatar["Distance"]}</Td>
                                 <Td isNumeric>{avatar["RenderingCost"]}</Td>

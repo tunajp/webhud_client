@@ -106,7 +106,7 @@ export default class App extends React.Component {
                         }
                         {this.state.page == 'Environment' &&
                             <VStack spacing={8}>
-                            <Environment></Environment>
+                            <Environment url={this.props.url}></Environment>
                             </VStack>
                         }
                     </Grid>
