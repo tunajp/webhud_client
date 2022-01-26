@@ -23,9 +23,15 @@ import { withTranslation, WithTranslation } from 'react-i18next';
 const Links = ['Avatar', 'Items', 'Environment'];
 
 class NavLink extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    onClick = (e) => {
+        this.props.onNavClick(this.props.name); // propsで登録された親のメソッドを呼ぶ
+    }
     render() {
         return (
-            <Link
+            <Button
                 px={2}
                 py={1}
                 rounded={'md'}
@@ -33,9 +39,10 @@ class NavLink extends React.Component {
                     textDecoration: 'none',
                     bg: ['gray.200', 'gray.700'],
                 }}
-                href={'#'}>
+                onClick={this.onClick}
+                >
                 {this.props.children}
-            </Link>
+            </Button>
         );
     }
 }
@@ -59,6 +66,9 @@ class NavBar extends React.Component {
         console.log("onClose");
         this.setState({isOpen: false});
     }
+    onNavClick = (nav) => {
+        this.props.onNavClick(nav);
+    }
     render() {
         const { t } = this.props;
         return(
@@ -79,32 +89,32 @@ class NavBar extends React.Component {
                             spacing={4}
                             display={{ base: 'none', md: 'flex' }}>
                             {Links.map((link) => (
-                                <NavLink key={link}>{t(link)}</NavLink>
+                                <NavLink key={link} onNavClick={this.onNavClick} name={link}>{t(link)}</NavLink>
                             ))}
                             </HStack>
                         </HStack>
                         <Flex alignItems={'center'}>
                             <Menu>
-                            <ColorModeSwitcher justifySelf="flex-end" />
-                            <MenuButton
-                                as={Button}
-                                rounded={'full'}
-                                variant={'link'}
-                                cursor={'pointer'}
-                                minW={0}>
-                                <Avatar
-                                size={'sm'}
-                                src={
-                                    'https://img.icons8.com/color/100/000000/language.png'
-                                }
-                                />
-                            </MenuButton>
-                            <MenuList>
-                                <MenuItem onClick={()=>{this.props.i18n.changeLanguage("en");}}>English</MenuItem>
-                                <MenuItem onClick={()=>{this.props.i18n.changeLanguage("ja");}}>日本語</MenuItem>
-                                <MenuDivider />
-                                <MenuItem>Link 3</MenuItem>
-                            </MenuList>
+                                <ColorModeSwitcher justifySelf="flex-end" />
+                                <MenuButton
+                                    as={Button}
+                                    rounded={'full'}
+                                    variant={'link'}
+                                    cursor={'pointer'}
+                                    minW={0}>
+                                    <Avatar
+                                    size={'sm'}
+                                    src={
+                                        'https://img.icons8.com/color/100/000000/language.png'
+                                    }
+                                    />
+                                </MenuButton>
+                                <MenuList>
+                                    <MenuItem onClick={()=>{this.props.i18n.changeLanguage("en");}}>English</MenuItem>
+                                    <MenuItem onClick={()=>{this.props.i18n.changeLanguage("ja");}}>日本語</MenuItem>
+                                    <MenuDivider />
+                                    <MenuItem>Link 3</MenuItem>
+                                </MenuList>
                             </Menu>
                         </Flex>
                     </Flex>
@@ -113,7 +123,7 @@ class NavBar extends React.Component {
                     <Box pb={4} display={{ md: 'none' }}>
                         <Stack as={'nav'} spacing={4}>
                         {Links.map((link) => (
-                            <NavLink key={link}>{t(link)}</NavLink>
+                            <NavLink key={link} onNavClick={this.onNavClick} name={link}>{t(link)}</NavLink>
                         ))}
                         </Stack>
                     </Box>

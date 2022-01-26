@@ -14,6 +14,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import NavBar from './components/Navibar';
 import Hover from './components/Hover';
 import Pose from './components/Pose';
+import Environment from './components/Environment';
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -61,17 +62,31 @@ i18n.use(initReactI18next).init({
 export default class App extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            page: 'Avatar',
+        }
     }
+    onNavClick = (nav) => {
+        this.setState({page: nav});
+        console.log(this.state.page)
+    }
+    // TODO:ページ切り替え処理
     render() {
         return (
             <ChakraProvider theme={theme}>
                 <Box textAlign="center" fontSize="xl">
                     <Grid minH="100vh" p={3}>
-                        <NavBar />
-                        <VStack spacing={8}>
-                            <Hover url={this.props.url} />
-                            <Pose url={this.props.url} />
-                        </VStack>
+                        <NavBar onNavClick={this.onNavClick} />
+                        {this.state.page == 'Avatar' &&
+                            <VStack spacing={8}>
+                                <Hover url={this.props.url} />
+                                <Pose url={this.props.url} />
+                            </VStack>
+                        }
+                        {this.state.page == 'Environment' &&
+                            <Environment></Environment>
+                        }
                     </Grid>
                 </Box>
             </ChakraProvider>
