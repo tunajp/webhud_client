@@ -22,16 +22,16 @@ class Environment extends React.Component {
         this.state = {
             avatars:[
                 // ex.
-                {Name:"test1", uuid:"xxx-xxx-xxx", Distance:10, RenderingCost:25.4, ScriptMemory: 100},
-                {Name:"test2", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test3", uuid:"zzz-zzz-zzz", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test4", uuid:"aaa-aaa-aaa", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test5", uuid:"bbb-bbb-bbb", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test6", uuid:"ccc-ccc-ccc", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test7", uuid:"ddd-ddd-ddd", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test8", uuid:"eee-eee-eee", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test9", uuid:"fff-fff-fff", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
-                {Name:"test10", uuid:"ggg-ggg-ggg", Distance:12, RenderingCost:25.5, ScriptMemory: 101},
+                {Name:"test1", uuid:"xxx-xxx-xxx", Distance:10, RenderingCost:25.4, ScriptCount: 100},
+                {Name:"test2", uuid:"yyy-yyy-yyy", Distance:12, RenderingCost:25.5, ScriptCount: 101},
+                {Name:"test3", uuid:"zzz-zzz-zzz", Distance:12, RenderingCost:25.5, ScriptCount: 101},
+                {Name:"test4", uuid:"aaa-aaa-aaa", Distance:12, RenderingCost:25.5, ScriptCount: 101},
+                {Name:"test5", uuid:"bbb-bbb-bbb", Distance:12, RenderingCost:25.5, ScriptCount: 101},
+                {Name:"test6", uuid:"ccc-ccc-ccc", Distance:12, RenderingCost:25.5, ScriptCount: 101},
+                {Name:"test7", uuid:"ddd-ddd-ddd", Distance:12, RenderingCost:25.5, ScriptCount: 101},
+                {Name:"test8", uuid:"eee-eee-eee", Distance:12, RenderingCost:25.5, ScriptCount: 101},
+                {Name:"test9", uuid:"fff-fff-fff", Distance:12, RenderingCost:25.5, ScriptCount: 101},
+                {Name:"test10", uuid:"ggg-ggg-ggg", Distance:12, RenderingCost:25.5, ScriptCount: 101},
             ],
         };
     }
@@ -51,12 +51,13 @@ class Environment extends React.Component {
 
         fetch(url, {method, headers, body})
         .then((res)=> {
-            return res.json();
-            //return res.text();
+            //return res.json();
+            return res.text();
         })
         .then( (data) => {
-            console.dir(data);
-            this.setState({avatars: data});
+            const json = JSON.parse(data);
+            console.dir(json);
+            this.setState({avatars: json.avatars});
             //const resElement = document.querySelector("#res");
             //resElement.textContent = gatDate() + data;
             ////alert("success:"+ data); // sl内のcefでは表示されない
@@ -86,7 +87,7 @@ class Environment extends React.Component {
                             <Th>{t("Name")}</Th>
                             <Th isNumeric>{t("Distance")}</Th>
                             <Th isNumeric>{t("RenderingCost")}</Th>
-                            <Th isNumeric>{t("ScriptMemory")}</Th>
+                            <Th isNumeric>{t("ScriptCount")}</Th>
                             <Th>{t("Detail")}</Th>
                         </Tr>
                     </Thead>
@@ -96,7 +97,7 @@ class Environment extends React.Component {
                                 <Td>{avatar["Name"]}</Td>
                                 <Td isNumeric>{avatar["Distance"]}</Td>
                                 <Td isNumeric>{avatar["RenderingCost"]}</Td>
-                                <Td isNumeric>{avatar["ScriptMemory"]}</Td>
+                                <Td isNumeric>{avatar["ScriptCount"]}</Td>
                                 <Td><Button onClick={() => { this.onDetailClick(avatar["uuid"]);}}>{t("Detail")}</Button></Td>
                             </Tr>
                         ))}
@@ -106,7 +107,7 @@ class Environment extends React.Component {
                             <Th>{t("Name")}</Th>
                             <Th isNumeric>{t("Distance")}</Th>
                             <Th isNumeric>{t("RenderingCost")}</Th>
-                            <Th isNumeric>{t("ScriptMemory")}</Th>
+                            <Th isNumeric>{t("ScriptCount")}</Th>
                             <Th>{t("Detail")}</Th>
                         </Tr>
                     </Tfoot>

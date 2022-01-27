@@ -43,7 +43,7 @@ i18n.use(initReactI18next).init({
                 "Name": "Name",
                 "Distance": "Distance",
                 "RenderingCost": "RenderingCost",
-                "ScriptMemory": "ScriptMemory",
+                "ScriptCount": "ScriptCount",
                 "Detail": "Detail",
             },
         },
@@ -69,7 +69,7 @@ i18n.use(initReactI18next).init({
                 "Name": "アバター名",
                 "Distance": "距離",
                 "RenderingCost": "レンダリングコスト",
-                "ScriptMemory": "Scriptメモリ",
+                "ScriptCount": "Script数",
                 "Detail": "詳細"
             },
         },
