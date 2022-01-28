@@ -45,6 +45,10 @@ i18n.use(initReactI18next).init({
                 "RenderingCost": "RenderingCost",
                 "ScriptCount": "ScriptCount",
                 "Detail": "Detail",
+
+                "DisplayName": "DisplayName",
+                "Age": "Age",
+                "Profile": "Profile",
             },
         },
         ja: {
@@ -70,7 +74,11 @@ i18n.use(initReactI18next).init({
                 "Distance": "距離",
                 "RenderingCost": "レンダリングコスト",
                 "ScriptCount": "Script数",
-                "Detail": "詳細"
+                "Detail": "詳細",
+
+                "DisplayName": "表示名",
+                "Age": "年齢",
+                "Profile": "プロフィール",
             },
         },
     },
